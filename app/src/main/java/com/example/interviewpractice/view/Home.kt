@@ -28,7 +28,7 @@ import com.example.interviewpractice.view.PlayBar
 fun HomeScreen(controller: UserController) {
     val c by remember { mutableStateOf(controller) }
     val model = Model()
-    val questionVM = QuestionViewModel(model)
+    val questionVM = QuestionViewModel(model, true)
 
     Surface() {
         Column(

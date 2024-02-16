@@ -44,6 +44,7 @@ fun Question(questionViewModel: QuestionViewModel?) {
     Card(
         modifier = Modifier
             .padding(12.dp)
+            .fillMaxWidth()
     ) {
         Column(
             modifier = Modifier
