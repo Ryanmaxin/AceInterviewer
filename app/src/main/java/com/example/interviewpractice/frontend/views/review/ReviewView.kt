@@ -1,18 +1,10 @@
 package com.example.interviewpractice.frontend.views.review
 
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.gestures.AnchoredDraggableState
-import androidx.compose.foundation.gestures.DraggableAnchors
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
@@ -24,9 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.interviewpractice.controller.AuthController
@@ -43,7 +32,6 @@ import com.example.interviewpractice.model.MainModel
 import com.example.interviewpractice.types.AnsweredQuestion
 import com.example.interviewpractice.types.Question
 import com.example.interviewpractice.types.Tag
-import kotlin.math.roundToInt
 
 @Composable
 fun SimpleOutlinedTextField(rvvm: ReviewViewViewModel) {
@@ -59,7 +47,6 @@ fun SimpleOutlinedTextField(rvvm: ReviewViewViewModel) {
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ReviewView(mm: MainModel, c: ReviewController){
 
@@ -72,33 +59,12 @@ fun ReviewView(mm: MainModel, c: ReviewController){
     val playBarViewModel: PlayBarViewModel = viewModel()
     playBarViewModel.addModel(mm)
 
-
     clarityVM.name = "Clarity"
     understandingVM.name = "Understanding"
 
-
-
     val dummyQuestion = AnsweredQuestion(
         textResponse = "How do you manage the memory of an object in C++?",
-        userID = c.getUser()
-    )
-
-
-    val density = LocalDensity.current
-
-    val state = remember {
-        AnchoredDraggableState(
-            initialValue = 0f,
-            anchors = DraggableAnchors {
-                -1f at 1500f
-                0f at 0f
-                1f at -1500f
-            },
-            positionalThreshold = { distance: Float -> distance * 0.3f },
-            velocityThreshold = { with(density) { 100.dp.toPx() } },
-            animationSpec = tween()
-        )
-    }
+        userID = c.getUser())
 
     Column(
         modifier = Modifier
@@ -109,35 +75,32 @@ fun ReviewView(mm: MainModel, c: ReviewController){
         verticalArrangement = Arrangement.spacedBy(6.dp),
         horizontalAlignment = Alignment.Start
     ) {
-        Box(
-            modifier = Modifier
-                .anchoredDraggable(state, Orientation.Horizontal)
-                .offset {
-                    IntOffset(
-                        x = state
-                            .requireOffset()
-                            .roundToInt(), y = 0
-                    )
-                }
-        ) {
-            DummyQuestion(
-                qText = "How do you manage the memory of an object in C++?",
-                tags = listOf("C++", "Programming"),
-            )
-        }
-
+        DummyQuestion(
+            qText = "How do you manage the memory of an object in C++?",
+            tags = listOf("C++", "Programming")
+        )
+        
         PlayBar(playBarViewModel)
+
+        /*
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+
+        }
+         */
 
         StarSelection(understandingVM)
         StarSelection(clarityVM)
 
         SimpleOutlinedTextField(rvvm)
 
-        Button(
-            onClick = {c.verifyReview(rvvm.reviewText, clarityVM.intScore,understandingVM.intScore,dummyQuestion/*REPLACE WITH ACTUAL QUESTION ID*/)} ,
-            modifier = Modifier.fillMaxWidth()
-        ) {
+        Button( onClick = {c.verifyReview(rvvm.reviewText, clarityVM.intScore,understandingVM.intScore,dummyQuestion/*REPLACE WITH ACTUAL QUESTION ID*/)} ) {
             Text("Submit")
         }
+
+        //StarSelection("Sample")
+        //TODO: Add Marcus' tiered feedback review component
     }
 }

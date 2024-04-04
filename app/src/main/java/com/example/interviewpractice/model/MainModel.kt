@@ -3,7 +3,6 @@ package com.example.interviewpractice.model
 import android.content.Context
 import android.net.Uri
 import android.util.Log
-import androidx.core.content.FileProvider
 import com.example.interviewpractice.helpers.getCurrentDate
 import com.example.interviewpractice.types.AnsweredQuestion
 import com.example.interviewpractice.types.CatastrophicException
@@ -28,7 +27,6 @@ import com.google.firebase.firestore.toObject
 import com.google.firebase.storage.storage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.tasks.await
-import java.io.File
 import java.io.InputStream
 import java.util.Date
 import java.util.UUID
@@ -415,24 +413,6 @@ class MainModel() : Presenter() {
 //        }
 //    }
 
-
-    suspend fun uploadAudio(audioFile: File, context: Context){
-        val storageRef = storage.reference.child("audio_recordings/${audioFile.name}")
-
-        val fileUri = FileProvider.getUriForFile(context, context.packageName + ".provider", audioFile)
-        val uploadTask = storageRef.putFile(fileUri)
-        uploadTask.addOnSuccessListener {
-            // Audio uploaded successfully
-            // You can get the download URL here and save it to Firestore or Realtime Database
-            storageRef.downloadUrl.addOnSuccessListener { uri ->
-                val downloadUrl = uri.toString()
-                // Save downloadUrl to Firestore or Realtime Database
-                Log.d("AUDIO URL", "$downloadUrl")
-            }
-        }.addOnFailureListener {
-            // Handle failure
-        }
-    }
 
     companion object {
         private const val TAG = "MainModel"
