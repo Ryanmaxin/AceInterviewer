@@ -2,7 +2,9 @@
 Both students and professionals have limited access to valuable feedback on their responses to typical interview questions in their field, resulting in inadequate preparation and missed opportunities. Our application bridges this gap by offering a platform where users can engage with typical interview questions relevant to their industry and publicly post their answers to receive insightful feedback from a community of peers. This interactive forum not only enhances preparation but also fosters a supportive environment for career development.
 
 ### Demo:
+
 https://github.com/Ryanmaxin/AceInterviewer/assets/90675771/2e6002a9-2cc6-4c92-a649-3f55b11eda82
+
 (The above is heavily compressed. See high quality version [here](https://drive.google.com/drive/folders/1df4Uqqx2KcWLQjGhdKKC23v_FGc0OZ36?usp=sharing)
 
 
