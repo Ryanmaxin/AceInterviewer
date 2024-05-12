@@ -1,5 +1,5 @@
 # AceInterviewer
-Students and professionals alike have limited access to valuable feedback on their responses to common interview questions within their discipline, often leading to solo-preparation with limited feedback on their responses. Our app serves as a forum for common interview questions, responses, and community feedback. Users can answer common industry questions and submit them publicly to be reviewed with feedback. 
+Both students and professionals have limited access to valuable feedback on their responses to typical interview questions in their field, resulting in inadequate preparation and missed opportunities. Our application bridges this gap by offering a platform where users can engage with typical interview questions relevant to their industry and publicly post their answers to receive insightful feedback from a community of peers. This interactive forum not only enhances preparation but also fosters a supportive environment for career development.
 
 ### Contributors: 
 * Ryan Maxin [Email](mailto:rsmaxin@uwaterloo.ca)
