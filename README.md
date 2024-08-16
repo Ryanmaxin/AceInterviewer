@@ -21,9 +21,9 @@ To download our app, please download the APK [here](https://drive.google.com/fil
 **[Design Documentation](https://github.com/Ryanmaxin/AceInterviewer/wiki/Design-Documentation)**
 
 ### Reflection
-Our team worked together to build the app 'AceInterviewer'. 
+My friends and I worked together to build the app AceInterviewer during CS 346. 
 
-The largest 'best practice' we used was MVVM architecture. We have one Firebase database that is referenced only from our models. We have two models: One authentication model and one main model. The authentication model deals with everything to do with authentication such as data coming in from the login and register reviews, while the main model deals with the bulk of the app functionality. We separate each screen by giving it a view, and each view generally has a viewModel if computations need to be done. We also have controllers that the views can use to request data from the model to update. 
+The largest best practice we used was MVVM architecture. We have one Firebase database that is referenced only from our models. We have two models: One authentication model and one main model. The authentication model deals with everything to do with authentication such as data coming in from the login and register reviews, while the main model deals with the bulk of the app functionality. We separate each screen by giving it a view, and each view generally has a viewModel if computations need to be done. We also have controllers that the views can use to request data from the model to update. 
 
 Our team adapted as our project progressed by speeding up our work as the sprints moved along. The first sprint was largely all of our team members working with Kotlin and compose for the first time and our output was a few screen and some basic architecture, but as we progressed we started having a lot more meetings and integrating everyone's code together in a cohesive way. We also took all the suggestions the TA made during our demos to progress our app. 
 
